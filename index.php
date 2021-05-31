@@ -19,7 +19,7 @@ $tappeStagione = ["Venezia", "Virtus Bologna", "Brindisi", "Trento", "Dinamo Sas
 
         $punteggioPartita = rand(9, 62) . "-" . rand(9, 62);
 
-        echo "<li><strong>" . $squadraCasa . " - " . $tappeStagione[$i] . " | " . $punteggioPartita . "</li>";
+        echo "<li><strong>" . $squadraCasa . " - " . $tappeStagione[$i] . " | " . $punteggioPartita . "</strong></li>";
     }
     ?>
 </ul>
@@ -50,8 +50,109 @@ $access = "Accesso negato";
         $access = "Accesso consentito";
     }
     ?>
-    <li><?php echo strtoupper($access) ?></li>
+    <li><strong><?php echo strtoupper($access) ?></strong></li>
     <li>Nome utente: <?php echo $userEmail ?></li>
     <li>Età utente: <?php echo $userAge ?></li>
     <li>Mail utente: <?php echo $userName ?></li>
 </ul>
+
+<?php
+
+## Snack 3
+/*Creare un array di array. Ogni array figlio avrà come chiave una data in questo 
+formato: DD-MM-YYYY es 01-01-2007 e come valore un array di post associati a quella data.
+Stampare ogni data con i relativi post.*/
+
+$posts = [
+    "10/01/2015" => [
+        [
+            "title" => "Post 1",
+            "author" => "Paolo",
+            "text" => "lorem"
+        ]
+    ],
+
+    "11/01/2015" => [
+        [
+            "title" => "Post 1",
+            "author" => "Paolo",
+            "text" => "lorem"
+        ],
+
+        [
+            "title" => "Post 2",
+            "author" => "Marco",
+            "text" => "lorem ipsum"
+        ]
+    ],
+
+    "12/01/2015" => [
+        [
+            "title" => "Post 1",
+            "author" => "Paolo",
+            "text" => "lorem"
+        ],
+
+        [
+            "title" => "Post 2",
+            "author" => "Marco",
+            "text" => "lorem ipsum"
+        ],
+
+        [
+            "title" => "Post 3",
+            "author" => "Matteo",
+            "text" => "lorem ipsum dolor"
+        ],
+    ]
+
+]
+?>
+
+<h1>Snack #3</h1>
+
+<ul style="list-style: none;">
+    <?php
+    $posts_dates = array_keys($posts);
+
+    echo $posts_dates;
+    for ($i = 0; $i < count($posts); $i++) {
+
+        //echo "<li><strong>" . $posts[$i] . "</strong></li>";
+        //echo array_keys($posts);
+
+    }
+
+    ?>
+</ul>
+
+<?php
+
+
+## Snack 4
+/*Creare un array con 15 numeri casuali, tenendo conto che l’array non dovrà contenere lo
+stesso numero più di una volta*/
+
+
+?>
+<h1>Snack #4</h1>
+
+<?php
+$array = [];
+
+for ($i = 0; $i < 15; $i++) {
+    $randomNumber = rand(0, 100);
+
+    if (!in_array($randomNumber, $array)) {
+        array_push($array, $randomNumber);
+    } else {
+        $i--;
+    }
+}
+
+$comma_separated = implode(", ", $array);
+
+?>
+
+<p><strong>Number Array: </strong><?php echo $comma_separated ?></p>
+<p><strong>Number Array Length: </strong><?php echo count($array) ?> numeri.</p>
