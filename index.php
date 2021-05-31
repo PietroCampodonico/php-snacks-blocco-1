@@ -110,30 +110,41 @@ $posts = [
 ?>
 
 <h1>Snack #3</h1>
+<?php
+$texts_dates = array_keys($posts);
 
-<ul style="list-style: none;">
+?>
+
+<ul>
     <?php
-    $posts_dates = array_keys($posts);
 
-    echo $posts_dates;
-    for ($i = 0; $i < count($posts); $i++) {
-
-        //echo "<li><strong>" . $posts[$i] . "</strong></li>";
-        //echo array_keys($posts);
-
+    for ($i = 0; $i < count($texts_dates); $i++) {
+        $texts = $texts_dates[$i];
+        $currentElement = $posts[$texts];
+        
+        for ($j = 0; $j < count($currentElement); $j++) {
+            $texts_content = $currentElement[$j]
+            
+            ?>
+            <li><strong><?php echo $texts?></strong>
+                <ul>
+                    <li><?php echo $texts_content["title"] ?></li>
+                    <li><?php echo $texts_content["author"] ?></li>
+                    <li><?php echo $texts_content["text"] ?></li>
+                </ul>
+            </li>
+    <?php
+        }
     }
-
     ?>
 </ul>
 
+
+
 <?php
-
-
 ## Snack 4
 /*Creare un array con 15 numeri casuali, tenendo conto che l’array non dovrà contenere lo
 stesso numero più di una volta*/
-
-
 ?>
 <h1>Snack #4</h1>
 
